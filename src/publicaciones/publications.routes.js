@@ -4,21 +4,20 @@ import {
     publicationsDelete,
     publicationsPost,
     publicationsPut,
+    getPublicationsById
 } from "./publications.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
-import { validarJWT } from "../middlewares/validar-jwt.js";
-import { validarUser } from  "../middlewares/validar-users.js";
-import { existeUsuarioById } from "../helpers/db-validators.js";
 
 const router = Router();
+
+router.get("/:id", getPublicationsById);
 
 router.post(
     "/",
     [
-        validarJWT,
-        check("title", "The title is mandatory"),
-        check("category", "The category is mandatory"),
-        check("text", "The text is required"),
+        check("title", "The title is mandatory").notEmpty(),
+        check("category", "The category is mandatory").notEmpty(),
+        check("text", "The text is required").notEmpty(),
         validarCampos,
     ],
     publicationsPost
@@ -27,10 +26,9 @@ router.post(
 router.put(
     "/:id",
     [
-        validarJWT,
-        check("title", "The title is mandatory"),
-        check("category", "The category is mandatory"),
-        check("text", "The text is required"),
+        check("title", "The title is mandatory").notEmpty(),
+        check("category", "The category is mandatory").notEmpty(),
+        check("text", "The text is required").notEmpty(),
         validarCampos,
     ],
     publicationsPut
@@ -39,9 +37,7 @@ router.put(
 router.delete(
     "/:id",
     [
-        validarJWT,
-        validarUser,
-        check("id","Not a valid ID").isMongoId(),
+        check("id", "Not a valid ID").isMongoId(),
         validarCampos,
     ],
     publicationsDelete
