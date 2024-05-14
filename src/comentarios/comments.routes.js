@@ -1,43 +1,23 @@
-import { Router } from "express";
-import { check } from "express-validator";
-import {
-    commentPost,
-    commentPut,
-    commentDelete
-} from "./comments.controller.js";
+import { Router } from 'express';
+import { check } from 'express-validator';
+import { createComment, 
+        getCommentsByPublicationId } from './comments.controller.js';
 import { validarCampos } from "../middlewares/validar-campos.js";
-import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
 router.post(
-    "/",
+    '/',
     [
-        validarJWT,
-        check("publicationId", "ID isn't a valid MongoDB format").isMongoId(),
-        check("title", "Title is required").not().isEmpty(),
-        check("comments", "Content is required").not().isEmpty(),
-        validarCampos,
-    ], commentPost
+        check('publicationId', 'Publication ID is required').notEmpty(),
+        check('commenterName', 'Commenter name is required').notEmpty(),
+        check('commenterEmail', 'Commenter email is required').isEmail(),
+        check('commentText', 'Comment text is required').notEmpty(),
+        validarCampos
+    ],
+    createComment
 );
 
-
-router.put(
-    "/:id",
-    [
-        validarJWT,
-        check("title", "Title is required").not().isEmpty(),
-        check("comments", "Content is required").not().isEmpty(),
-        validarCampos,
-    ], commentPut
-);
-
-router.delete(
-    "/:id",
-    [
-        validarJWT,
-        validarCampos,
-    ], commentDelete
-);
+router.get('/:publicationId', getCommentsByPublicationId);
 
 export default router;

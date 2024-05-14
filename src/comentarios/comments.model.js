@@ -1,32 +1,24 @@
 import mongoose, { Schema } from "mongoose";
 
-const CommentsSchema = mongoose.Schema({
+const CommentsSchema = new Schema({
     publicationId: {
         type: Schema.Types.ObjectId,
-        ref: 'Publications'
+        ref: 'Publications',
+        required: [true, 'Publication ID is required']
     },
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Users'
-    },
-    title: {
+    commenterName: {
         type: String,
-        require: [true, 'The title is required'],
+        required: [true, 'Commenter name is required']
     },
-    comments: {
+    commenterEmail: {
         type: String,
-        require: [true, 'The comment is required'],
+        required: [true, 'Commenter email is required'],
+        match: [/.+\@.+\..+/, 'Please enter a valid email address']
     },
-    state: {
-        type: Boolean,
-        default: true,
+    commentText: {
+        type: String,
+        required: [true, 'Comment text is required']
     }
 });
-
-CommentsSchema.methods.toJSON = function(){
-    const { _v, _id, state, ...comment} = this.toObject();
-    comment.uid = _id;
-    return comment;
-}
 
 export default mongoose.model('Comment', CommentsSchema);
