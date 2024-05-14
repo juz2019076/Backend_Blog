@@ -1,0 +1,101 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "BLOG",
+    "collectionId": "8d6840e0-d806-468d-a463-2fe7a1fffba8",
+    "dateExported": "2024-05-14T06:26:29.904Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "939ba93b-5125-4cbe-bf92-c9ab1e90707c",
+            "name": "COMMENTS",
+            "containerId": "",
+            "created": "2024-05-14T05:24:15.904Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "b785d5c5-34d5-4540-a3dd-4a0315deebb1",
+            "name": "PUBLICATIONS",
+            "containerId": "",
+            "created": "2024-05-14T05:24:33.702Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "13c87ce1-8922-4cbe-90b1-fed11bdde91b",
+            "colId": "8d6840e0-d806-468d-a463-2fe7a1fffba8",
+            "containerId": "b785d5c5-34d5-4540-a3dd-4a0315deebb1",
+            "name": "POST_Publications",
+            "url": "http://localhost:3000/blog/v1/publications",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-14T05:32:05.371Z",
+            "modified": "2024-05-14T06:25:06.892Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"title\": \"Segunda publicación\",\r\n    \"category\": \"Taller\",\r\n    \"text\": \"Este es el contenido de mi primera publicación.\"\r\n}\r\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "ddab0d99-abd1-455d-97f2-310eec7e5627",
+            "colId": "8d6840e0-d806-468d-a463-2fe7a1fffba8",
+            "containerId": "939ba93b-5125-4cbe-bf92-c9ab1e90707c",
+            "name": "POST_Comments",
+            "url": "http://localhost:3000/blog/v1/comments",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-05-14T05:33:16.851Z",
+            "modified": "2024-05-14T05:34:06.009Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"publicationId\": \"6642f76e7686ebdcccebb4dc\",\r\n    \"commenterName\": \"Fabricio Uz\",\r\n    \"commenterEmail\": \"fabriuz@example.com\",\r\n    \"commentText\": \"¡Gran publicación!\"\r\n}\r\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "13715410-0492-4308-9d5f-c9c6017de100",
+            "colId": "8d6840e0-d806-468d-a463-2fe7a1fffba8",
+            "containerId": "b785d5c5-34d5-4540-a3dd-4a0315deebb1",
+            "name": "GET_Publications",
+            "url": "http://localhost:3000/blog/v1/comments/6642f76e7686ebdcccebb4dc",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-05-14T05:35:04.696Z",
+            "modified": "2024-05-14T05:35:16.771Z",
+            "headers": []
+        },
+        {
+            "_id": "fd1d6d10-42bd-4769-bb68-5a555b2cff70",
+            "colId": "8d6840e0-d806-468d-a463-2fe7a1fffba8",
+            "containerId": "b785d5c5-34d5-4540-a3dd-4a0315deebb1",
+            "name": "PUT_Publications",
+            "url": "http://localhost:3000/blog/v1/publications/6642f76e7686ebdcccebb4dc",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-05-14T06:24:20.971Z",
+            "modified": "2024-05-14T06:24:44.446Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"title\": \"Título actualizado\",\r\n    \"category\": \"Nueva categoría\",\r\n    \"text\": \"Texto actualizado de la publicación.\"\r\n}\r\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "ee5732d0-78f0-41c1-bdca-377d148f2783",
+            "colId": "8d6840e0-d806-468d-a463-2fe7a1fffba8",
+            "containerId": "b785d5c5-34d5-4540-a3dd-4a0315deebb1",
+            "name": "DELETE_Publications",
+            "url": "http://localhost:3000/blog/v1/publications/664303c27686ebdcccebb4e3",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-05-14T06:25:24.368Z",
+            "modified": "2024-05-14T06:25:46.931Z",
+            "headers": []
+        }
+    ],
+    "ref": "oX6chC8Vof_HNrngCNSjIQz2zGWpIBVEiMVK96yqLyDEByioA9rQiNRUWirZVLn913i6eIFTFA6CNOYCGfgFXQ"
+}
